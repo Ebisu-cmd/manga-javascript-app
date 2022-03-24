@@ -9,11 +9,11 @@ let pokemonList = [
 
 // Loop that displays pokemons name and height and checks if its a big pokemon with a conditional
 for (let i = 0; i < pokemonList.length; i++) {
-    document.write(pokemonList[i].name + ` (height: ${pokemonList[i].height})`);
+    document.write(`<p>${pokemonList[i].name} (height: ${pokemonList[i].height})`)
     if (pokemonList[i].height > 3.0) {
-        document.write(` - Wow, that's big!<br>`);
+        document.write(` - Wow, that's big!</p>`);
     }
     else {
-        document.write('<br>');
+        document.write('</p>');
     }
 }

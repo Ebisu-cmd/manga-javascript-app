@@ -1,11 +1,11 @@
 //IIFE for global data/states
 let pokemonRepository = (function () {
-    
+
     //My array of Pokemon
     let pokemonList = [
         { name: 'Gengar', height: 1.5, type: ['Ghost', 'Poison'] },
         { name: 'Giratina', height: 4.5, type: ['Dragon', 'Ghost'] },
-        { name: 'Cleffa', height: 0.3, type: ['Fairy'] } 
+        { name: 'Cleffa', height: 0.3, type: ['Fairy'] }
     ];
 
     // --- My public functions --- 
@@ -29,19 +29,19 @@ let pokemonRepository = (function () {
     //Verifies added pokemon object: adds pokemon to repository if valid / alerts user if pokemon object is invalid
     function addv(item) {
         //check if the item is an object
-        if(typeof item === 'object') {
+        if (typeof item === 'object') {
             //check if object has correct number of keys
-            if(Object.keys(item).length === 3){
+            if (Object.keys(item).length === 3) {
                 //check if the object has the correct keys and correct data types for each keys
                 let caseOne = false;
                 let caseTwo = false;
                 let caseThree = false;
-                for(let i = 0; i < 3; i++) {
+                for (let i = 0; i < 3; i++) {
                     switch (i) {
                         case 0:
                             //check if first key is 'name' and is a String
-                            if(Object.keys(item)[i] === 'name') {
-                                if(typeof item.name === 'string') {
+                            if (Object.keys(item)[i] === 'name') {
+                                if (typeof item.name === 'string') {
                                     caseOne = true;
                                 }
                             }
@@ -49,8 +49,8 @@ let pokemonRepository = (function () {
 
                         case 1:
                             //check if second key is 'height' and is a Number
-                            if(Object.keys(item)[i] === 'height') {
-                                if(typeof item.height === 'number') {
+                            if (Object.keys(item)[i] === 'height') {
+                                if (typeof item.height === 'number') {
                                     caseTwo = true;
                                 }
                             }
@@ -62,35 +62,35 @@ let pokemonRepository = (function () {
                             let caseThreeThree = true;
 
                             //Check if third key is 'type' and is an Array
-                            if(Object.keys(item)[i] === 'type') {
-                                if(Array.isArray(item.type)) {
+                            if (Object.keys(item)[i] === 'type') {
+                                if (Array.isArray(item.type)) {
                                     caseThreeOne = true;
                                 }
                             }
-                            
+
                             //Check if type array only has one or two types (pokemon can only have 1 or two types)
-                            if(caseThreeOne === true) {
-                                if(item.type.length >= 1 && item.type.length <= 2){
+                            if (caseThreeOne === true) {
+                                if (item.type.length >= 1 && item.type.length <= 2) {
                                     caseThreeTwo = true;
                                 }
                             }
 
                             //Check if third key Array values are Strings
-                            if(caseThreeTwo === true) {
-                                item.type.forEach(function(type) {
-                                    if(typeof type !== 'string'){
+                            if (caseThreeTwo === true) {
+                                item.type.forEach(function (type) {
+                                    if (typeof type !== 'string') {
                                         caseThreeThree = false;
                                     }
                                 });
                             }
-                            
-                            if(caseThreeOne === true && caseThreeTwo === true && caseThreeThree === true) {
+
+                            if (caseThreeOne === true && caseThreeTwo === true && caseThreeThree === true) {
                                 caseThree = true;
                             }
                             break;
                     }
                 }
-                if(caseOne === true && caseTwo === true && caseThree === true) {
+                if (caseOne === true && caseTwo === true && caseThree === true) {
                     add(item);
                     return;
                 }
@@ -102,30 +102,30 @@ let pokemonRepository = (function () {
     // finds a pokemon in the pokemon array
     function find(name) {
         //checks if input is a string
-        if(typeof name !== 'string') {
+        if (typeof name !== 'string') {
             alert('Inputted pokemon name is not a string!')
             return;
         }
 
         //find pokemon object in our pokemon array
-        let found = pokemonList.filter(function(pokemon){
+        let found = pokemonList.filter(function (pokemon) {
             return pokemon.name === name;
         });
 
         //checks if pokemon was found or not
-        if(found.length === 0) {
+        if (found.length === 0) {
             alert('Pokemon not found!');
         }
-        else{
+        else {
             return found[0];
         }
     }
 })();
 
 // Loop that displays pokemons name and height and checks if its a big pokemon with a conditional
-pokemonRepository.getAll().forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function (pokemon) {
     document.write(`<p>${pokemon.name} (height: ${pokemon.height})`);
-    if(pokemon.height > 3.0) {
+    if (pokemon.height > 3.0) {
         document.write(` - Wow, that's big!</p>`);
     }
     else {

@@ -1,12 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     /* Basic Hacker Color Scheme  */
     background-color: black;
-    color: #00ff00;
+    color: white;
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
+    text-align: center;
 }
 
+/* Styling for my title */
 h1 {
     font-size: 70px;
     text-decoration: underline;
+}
+
+/* Styling for my pokemon buttons (taken from https://fdossena.com/?p=html5cool/buttons/i.frag) */
+.pokemon-button {
+    display:inline-block;
+    padding: 0.35em 1.2em;
+    border:0.1px solid #FFFFFF;
+    background-color: transparent;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    text-decoration:none;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+    width: 500px;
+    height: 100px;
+    font-size: 30px;
+}
+.pokemon-button:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+    cursor: pointer;
+}
+
+
+/* Styling for unordered list */
+ul {
+    list-style-type: none;
 }

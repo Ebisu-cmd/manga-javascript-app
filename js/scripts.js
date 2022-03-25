@@ -64,11 +64,11 @@ let pokemonRepository = (function () {
 
 // Loop that displays pokemons name and height and checks if its a big pokemon with a conditional
 pokemonRepository.getAll().forEach(function (pokemon) {
-    document.write(`<p>${pokemon.name} (height: ${pokemon.height})`);
-    if (pokemon.height > 3.0) {
-        document.write(` - Wow, that's big!</p>`);
-    }
-    else {
-        document.write('</p>');
-    }
+    let list = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-button');
+    listItem.appendChild(button);
+    list.appendChild(listItem);
 });

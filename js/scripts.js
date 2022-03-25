@@ -13,7 +13,8 @@ let pokemonRepository = (function () {
         getAll: getAll,
         add: add,  //will comment this out later because addv is the same function but with data verification
         addv: addv,
-        find: find
+        find: find,
+        addListItem: addListItem
     };
 
     //Return my array of pokemon
@@ -60,15 +61,20 @@ let pokemonRepository = (function () {
             return found;
         }
     }
+
+    function addListItem(pokemon) {
+        let list = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('pokemon-button');
+        listItem.appendChild(button);
+        list.appendChild(listItem);
+    }
+
 })();
 
 // Loop that displays pokemons name and height and checks if its a big pokemon with a conditional
 pokemonRepository.getAll().forEach(function (pokemon) {
-    let list = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('pokemon-button');
-    listItem.appendChild(button);
-    list.appendChild(listItem);
+    pokemonRepository.addListItem(pokemon);
 });

@@ -13,6 +13,7 @@ let pokemonRepository = (function () {
         getAll: getAll,
         add: add,  //will comment this out later because addv is the same function but with data verification
         addv: addv,
+        find: find
     };
 
     //Return my array of pokemon
@@ -98,7 +99,27 @@ let pokemonRepository = (function () {
         alert('Inputted Pokemon Object is invalid (correct input -> {name: string, height: number, type: array of 1 or 2 strings}');
     }
 
-    
+    // finds a pokemon in the pokemon array
+    function find(name) {
+        //checks if input is a string
+        if(typeof name !== 'string') {
+            alert('Inputted pokemon name is not a string!')
+            return;
+        }
+
+        //find pokemon object in our pokemon array
+        let found = pokemonList.filter(function(pokemon){
+            return pokemon.name === name;
+        });
+
+        //checks if pokemon was found or not
+        if(found.length === 0) {
+            alert('Pokemon not found!');
+        }
+        else{
+            return found[0];
+        }
+    }
 })();
 
 // Loop that displays pokemons name and height and checks if its a big pokemon with a conditional

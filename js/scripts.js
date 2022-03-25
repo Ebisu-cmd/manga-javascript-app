@@ -37,25 +37,27 @@ let pokemonRepository = (function () {
         }
     }
 
-    // finds a pokemon in the pokemon array
-    function find(name) {
+    //finds pokemons in the array that contains the characters in the input
+    function find(inputName) {
         //checks if input is a string
-        if (typeof name !== 'string') {
+        if (typeof inputName !== 'string') {
             alert('Inputted pokemon name is not a string!')
             return;
         }
 
-        //find pokemon object in our pokemon array
+        //find pokemons in our array (convert everything to lowercase to ignore case sensitivity)
         let found = pokemonList.filter(function (pokemon) {
-            return pokemon.name === name;
+            let lowercaseListName = pokemon.name.toLowerCase();
+            let lowercaseInputName = inputName.toLowerCase();
+            return lowercaseListName.includes(lowercaseInputName);
         });
 
         //checks if pokemon was found or not
         if (found.length === 0) {
-            alert('Pokemon not found!');
+            alert('No pokemon found!');
         }
         else {
-            return found[0];
+            return found;
         }
     }
 })();

@@ -5,3 +5,8 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
 }
+
+h1 {
+    font-size: 70px;
+    text-decoration: underline;
+}

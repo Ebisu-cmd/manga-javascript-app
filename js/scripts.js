@@ -11,7 +11,6 @@ let pokemonRepository = (function () {
     // --- My public functions --- 
     return {
         getAll: getAll,
-        add: add,  //will comment this out later because addv is the same function but with data verification
         addv: addv,
         find: find,
         addListItem: addListItem
@@ -62,19 +61,42 @@ let pokemonRepository = (function () {
         }
     }
 
+    //adds pokemon to list in the app
     function addListItem(pokemon) {
+        //select unordered list in html file
         let list = document.querySelector('.pokemon-list');
+
+        //create button and list element
         let listItem = document.createElement('li');
         let button = document.createElement('button');
+
+        //set style class and text to button
         button.innerText = pokemon.name;
         button.classList.add('pokemon-button');
+
+        //append button to list and list item to unordered list in app
         listItem.appendChild(button);
         list.appendChild(listItem);
+
+        //log pokemon details into console when button is clicked
+        pokemonButtonListener(button, pokemon);
+    }
+
+    //logs pokemon details into console
+    function showDetails(pokemon) {
+        console.log(pokemon);
+    }
+
+    //add event listener to new pokemon buttton
+    function pokemonButtonListener(button, pokemon) {
+        button.addEventListener('click', function() {
+            showDetails(pokemon);
+        });
     }
 
 })();
 
-// Loop that displays pokemons name and height and checks if its a big pokemon with a conditional
+// Loop that displays pokemon as buttons in a column
 pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
 });

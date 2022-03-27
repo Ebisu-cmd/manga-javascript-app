@@ -84,7 +84,9 @@ let pokemonRepository = (function () {
 
     //logs pokemon details into console
     function showDetails(pokemon) {
-        console.log(pokemon);
+        loadDetails(pokemon).then(function () {
+            console.log(pokemon);
+        })
     }
 
     //add event listener to new pokemon buttton
@@ -116,7 +118,7 @@ let pokemonRepository = (function () {
         return fetch(url).then(function (response) {
             return response.json();
         }).then(function (details) {
-            item.imageUrl = details.sprites.front_dfault;
+            item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
         }).catch(function (e) {

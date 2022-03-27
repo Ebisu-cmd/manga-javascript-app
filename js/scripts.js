@@ -1,19 +1,18 @@
 //IIFE for global data/states
 let pokemonRepository = (function () {
 
-    //My array of Pokemon
-    let pokemonList = [
-        { name: 'Gengar', height: 1.5, type: ['Ghost', 'Poison'] },
-        { name: 'Giratina', height: 4.5, type: ['Dragon', 'Ghost'] },
-        { name: 'Cleffa', height: 0.3, type: ['Fairy'] }
-    ];
+    //IIFE variables
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     // --- My public functions --- 
     return {
         getAll: getAll,
         addv: addv,
+        add: add,
         find: find,
-        addListItem: addListItem
+        addListItem: addListItem,
+        loadList: loadList
     };
 
     //Return my array of pokemon
@@ -94,9 +93,30 @@ let pokemonRepository = (function () {
         });
     }
 
+    //load list of pokemon from external pokemon api
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
+
+
 })();
 
-// Loop that displays pokemon as buttons in a column
-pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
+
+//load pokemon data
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
 });

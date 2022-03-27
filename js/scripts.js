@@ -12,7 +12,8 @@ let pokemonRepository = (function () {
         add: add,
         find: find,
         addListItem: addListItem,
-        loadList: loadList
+        loadList: loadList,
+        loadDetails: loadDetails
     };
 
     //Return my array of pokemon
@@ -110,6 +111,18 @@ let pokemonRepository = (function () {
         })
     }
 
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            item.imageUrl = details.sprites.front_dfault;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
 
 })();
 

@@ -9,7 +9,6 @@ let pokemonRepository = (function () {
     return {
         getAll: getAll,
         addv: addv,
-        add: add,
         find: find,
         addListItem: addListItem,
         loadList: loadList,
@@ -29,11 +28,11 @@ let pokemonRepository = (function () {
     //Verifies added pokemon object: adds pokemon to repository if valid / alerts user if pokemon object is invalid
     function addv(item) {
         //Checks if input is an object and has all the required keys
-        if (typeof item === 'object' && 'name' in item && 'height' in item && 'type' in item) {
+        if (typeof item === 'object' && 'name' in item && 'detailsUrl' in item) {
             add(item);
         }
         else {
-            alert('Inputted Pokemon Object is invalid (correct input -> {name: string, height: number, type: array of 1 or 2 strings}');
+            alert('Pokemon object is not correct');
         }
     }
 
@@ -106,13 +105,14 @@ let pokemonRepository = (function () {
                     name: item.name,
                     detailsUrl: item.url
                 };
-                add(pokemon);
+                addv(pokemon);
             });
         }).catch(function (e) {
             console.error(e);
         })
     }
 
+    //uses imageUrl of pokemon object to fetch more pokemon details from API
     function loadDetails(item) {
         let url = item.detailsUrl;
         return fetch(url).then(function (response) {

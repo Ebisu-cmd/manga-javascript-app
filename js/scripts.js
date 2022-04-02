@@ -54,21 +54,31 @@ let pokemonRepository = (function () {
     //adds pokemon to list in the app
     function addListItem(pokemon) {
         //select unordered list in html file
-        let list = document.querySelector('.pokemon-list');
+        let container = document.querySelector('.container-fluid');
 
-        //create button and list element
-        let listItem = document.createElement('li');
+        //create row div, col div, and button
+        let rowdiv = document.createElement('div');
+        let coldiv = document.createElement('div');
         let button = document.createElement('button');
+        
 
-        //set style class and text to button
+        //set bootstrap classs and text to divs and button
+        rowdiv.classList.add('row', 'align-content-center');
+        rowdiv.setAttribute('style', 'height: 100px');
+        coldiv.classList.add('col', 'd-flex', 'justify-content-center', 'm-2');
         button.innerText = pokemon.name;
-        button.classList.add('pokemon-button');
+        button.classList.add('btn', 'btn-danger', 'btn-lg', 'w-50');
+        button.setAttribute('type', 'button');
+        button.setAttribute('style', 'height: 75px');
 
-        //append button to list and list item to unordered list in app
-        listItem.appendChild(button);
-        list.appendChild(listItem);
+        //append button to col div, col div to row div, and row div to container
+        coldiv.appendChild(button);
+        rowdiv.appendChild(coldiv);
+        container.appendChild(rowdiv);
 
-        //log pokemon details into console when button is clicked
+    
+
+        //open modal with pokemon details when button is clicked
         pokemonButtonListener(button, pokemon);
     }
 
@@ -246,8 +256,8 @@ let pokemonRepository = (function () {
 
 
 //load pokemon data
-// pokemonRepository.loadList().then(function() {
-//     pokemonRepository.getAll().forEach(function (pokemon) {
-//         pokemonRepository.addListItem(pokemon);
-//     });
-// });
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
+});

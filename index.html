@@ -12,7 +12,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-warning">
     <!-- header bar with logo and text -->
     <header>
         <nav class="navbar navbar-dark bg-primary justify-content-center">
@@ -20,10 +20,21 @@
                 <img src="img/logo.svg" alt="Pokedex Logo">
             </a>
             <a class="navbar-brand" href="index.html">
-                <h1 class="display-3 text-dark">Pokedex</h1>
+                <h1 class="display-3 text-warning">Pokedex</h1>
             </a>
         </nav>
     </header>
+
+    <!-- main content of app which displays pokemon  -->
+    <main class="container-fluid">
+        <!-- search bar for filtering pokemon -->
+        <div class="row justify-content-center m-3">
+            <form class="col-6">
+                <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+    </main>
+
 
     <ul class="pokemon-list"></ul>
     <div id="modal-container" pointer-action="none"></div>

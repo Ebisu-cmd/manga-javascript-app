@@ -60,7 +60,6 @@ let pokemonRepository = (function () {
         let rowdiv = document.createElement('div');
         let coldiv = document.createElement('div');
         let button = document.createElement('button');
-        
 
         //set bootstrap classes and text to divs and button
         rowdiv.classList.add('row', 'align-content-center');
@@ -92,7 +91,7 @@ let pokemonRepository = (function () {
 
     // add event listener to new pokemon buttton
     function pokemonButtonListener(button, pokemon) {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             showDetails(pokemon);
         });
     }
@@ -128,28 +127,28 @@ let pokemonRepository = (function () {
         });
     }
 
-    // opens modal with pokemon information
+    // updates modal with pokemon information
     function showModal(pokemon) {
         // currentModalPokemon = pokemon;
         // let modalContainer = document.querySelector('#modal-container');
-      
+
         // // clear all existing modal content
         // modalContainer.innerHTML = '';
-      
+
         // let modal = document.createElement('div');
         // modal.classList.add('modal');
         // modal.setAttribute('pointer-action', 'none');
-      
+
         // // adds close button for modal with event listener
         // let closeButtonElement = document.createElement('button');
         // closeButtonElement.classList.add('modal-close');
         // closeButtonElement.innerText = 'X';
         // closeButtonElement.addEventListener('click', hideModal);
-        
+
         // // title as pokemon name
         // let titleElement = document.createElement('h1');
         // titleElement.innerText = pokemon.name;
-      
+
         // // information displayed is sprite, height and types
         // let imageContent = document.createElement('img');
         // imageContent.setAttribute('src', pokemon.imageUrl);
@@ -163,15 +162,15 @@ let pokemonRepository = (function () {
         // typeArray.forEach(function (type) {
         //     typeElement.innerText += ' ' + type;
         // });
-        
-      
+
+
         // modal.appendChild(closeButtonElement);
         // modal.appendChild(titleElement);
         // modal.appendChild(imageContent);
         // modal.appendChild(heightElement);
         // modal.appendChild(typeElement);
         // modalContainer.appendChild(modal);
-      
+
         // modalContainer.classList.add('is-visible');
 
         // nodes used for modal
@@ -204,7 +203,7 @@ let pokemonRepository = (function () {
         modalBody.appendChild(imageContent);
         modalBody.appendChild(heightElement);
         modalBody.appendChild(typeElement);
-        
+
     }
 
     //variables for pointer events
@@ -217,25 +216,25 @@ let pokemonRepository = (function () {
         let x = e.pageX; // X-coordinate of click/touch
         startX = x;
     }
-    
+
     // checks if pointer traveled enough distance to swap between pokemon modals
     function handleEnd(e) {
         isSwiping = false;
         if (Math.abs(e.pageX - startX) > 200) {
             // swipe left: go next pokemon
-            if(e.pageX-startX < 0) {
+            if (e.pageX - startX < 0) {
                 let index = pokemonList.indexOf(currentModalPokemon);
                 // if index is last dont go next pokemon
-                index === (pokemonList.length - 1) ? null : showDetails(pokemonList[index+1]);
+                index === (pokemonList.length - 1) ? null : showDetails(pokemonList[index + 1]);
                 startX = null;
             }
-             // swipe right: go previous pokemon
-            else if(e.pageX - startX > 0) {
+            // swipe right: go previous pokemon
+            else if (e.pageX - startX > 0) {
                 let index = pokemonList.indexOf(currentModalPokemon);
                 // if index is first dont go next pokemon
-                index === 0 ? null : showDetails(pokemonList[index-1]);
+                index === 0 ? null : showDetails(pokemonList[index - 1]);
                 startX = null;
-            } 
+            }
         }
         else {
             startX = null;
@@ -245,7 +244,7 @@ let pokemonRepository = (function () {
     // event listeners for swiping between data items
     // modalContainer.addEventListener("pointerdown", handleStart);
     // modalContainer.addEventListener("pointerup", handleEnd);
-    
+
 
 
     // --- My public functions --- 
@@ -262,7 +261,7 @@ let pokemonRepository = (function () {
 
 
 //load pokemon data
-pokemonRepository.loadList().then(function() {
+pokemonRepository.loadList().then(function () {
     pokemonRepository.getAll().forEach(function (pokemon) {
         pokemonRepository.addListItem(pokemon);
     });

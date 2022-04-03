@@ -1,7 +1,11 @@
-.btn {
-    font-size: 35px;
+body {
     font-family: 'Courier New', Courier, monospace;
 }
-.display-3 {
- font-family: 'Courier New', Courier, monospace;
+
+.btn {
+    font-size: 35px;
+}
+
+h5 {
+    font-weight: 700;
 }

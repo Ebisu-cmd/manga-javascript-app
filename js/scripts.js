@@ -43,13 +43,8 @@ let pokemonRepository = (function () {
             return lowercaseListName.includes(lowercaseInputName);
         });
 
-        //checks if pokemon was found or not
-        if (found.length === 0) {
-            alert('No pokemon found!');
-        }
-        else {
-            return found;
-        }
+        //returns found pokemon array
+         return found; 
     }
 
     //adds pokemon to list in the app

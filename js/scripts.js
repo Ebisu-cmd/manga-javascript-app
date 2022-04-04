@@ -201,7 +201,6 @@ let pokemonRepository = (function () {
     let search_input = document.querySelector('input[type="text"]');
     search_input.addEventListener('input', function () {
         let container = document.querySelector('.container-fluid');
-        console.log(search_input.value);
         //if input value is empty show all pokemon
         if (search_input.value === '') {
             while (container.firstChild) {

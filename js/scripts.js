@@ -44,7 +44,7 @@ let pokemonRepository = (function () {
         });
 
         //returns found pokemon array
-         return found; 
+        return found;
     }
 
     //adds pokemon to list in the app
@@ -199,11 +199,11 @@ let pokemonRepository = (function () {
 
     // event listener for search bar
     let search_input = document.querySelector('input[type="text"]');
-    search_input.addEventListener('input', function() {
+    search_input.addEventListener('input', function () {
         let container = document.querySelector('.container-fluid');
         console.log(search_input.value);
         //if input value is empty show all pokemon
-        if(search_input.value === '') {
+        if (search_input.value === '') {
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }

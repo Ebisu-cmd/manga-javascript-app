@@ -21,3 +21,8 @@ h5 {
     touch-action: none;
 }
 
+/* removed border for list items */
+.list-group-item {
+    border: none;
+}
+

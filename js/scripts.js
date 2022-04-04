@@ -63,7 +63,7 @@ let pokemonRepository = (function () {
         let button = document.createElement('button');
 
         //set bootstrap classes and text to divs and button
-        rowdiv.classList.add('row', 'align-content-center');
+        rowdiv.classList.add('row', 'align-content-center', 'list-group-item', 'bg-warning');
         rowdiv.setAttribute('style', 'height: 100px');
         coldiv.classList.add('col', 'd-flex', 'justify-content-center', 'm-2');
         button.innerText = pokemon.name;

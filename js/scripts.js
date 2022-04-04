@@ -198,9 +198,35 @@ let pokemonRepository = (function () {
         }
     }
 
-     // event listeners for swiping between data items
-     modalContainer.addEventListener("pointerdown", handleStart);
-     modalContainer.addEventListener("pointerup", handleEnd);
+    // event listeners for swiping between data items
+    modalContainer.addEventListener("pointerdown", handleStart);
+    modalContainer.addEventListener("pointerup", handleEnd);
+
+    // event listener for search bar
+    let search_input = document.querySelector('input[type="text"]');
+    search_input.addEventListener('input', function() {
+        let container = document.querySelector('.container-fluid');
+        console.log(search_input.value);
+        //if input value is empty show all pokemon
+        if(search_input.value === '') {
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            pokemonRepository.getAll().forEach(function (pokemon) {
+                pokemonRepository.addListItem(pokemon);
+            });
+        }
+        //if input value is not empty show all pokemon that contains input
+        else {
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            find(search_input.value).forEach(function (pokemon) {
+                pokemonRepository.addListItem(pokemon);
+            });
+        }
+    });
+
 
     // --- My public functions --- 
     return {

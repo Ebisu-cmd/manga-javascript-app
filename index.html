@@ -28,13 +28,11 @@
     </header>
 
     <!-- main content of app which displays pokemon  -->
-    <main class="container-fluid">
+    <main>
         <!-- search bar for filtering pokemon -->
         <div class="row justify-content-center m-3">
-            <form class="col-md-4">
-                <input class="form-control form-control-lg text-center" type="search" placeholder="Search"
-                    aria-label="Search">
-            </form>
+            <input class="form-control form-control-lg text-center col-md-4" type="text" placeholder="Search"
+                aria-label="Search">
         </div>
         <!-- modal for displaying pokemon -->
         <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel"
@@ -50,6 +48,10 @@
                     <div class="modal-body text-center"> </div>
                 </div>
             </div>
+        </div>
+        <!-- container for pokemon buttons -->
+        <div class="container-fluid">
+
         </div>
     </main>
 

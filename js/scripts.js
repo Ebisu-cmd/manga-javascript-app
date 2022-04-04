@@ -5,6 +5,7 @@ let pokemonRepository = (function () {
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1126';
     let currentModalPokemon = null;
+    let modalContainer = document.querySelector('#pokemonModal');
 
     //Return my array of pokemon
     function getAll() {
@@ -129,53 +130,10 @@ let pokemonRepository = (function () {
 
     // updates modal with pokemon information
     function showModal(pokemon) {
-        // currentModalPokemon = pokemon;
-        // let modalContainer = document.querySelector('#modal-container');
-
-        // // clear all existing modal content
-        // modalContainer.innerHTML = '';
-
-        // let modal = document.createElement('div');
-        // modal.classList.add('modal');
-        // modal.setAttribute('pointer-action', 'none');
-
-        // // adds close button for modal with event listener
-        // let closeButtonElement = document.createElement('button');
-        // closeButtonElement.classList.add('modal-close');
-        // closeButtonElement.innerText = 'X';
-        // closeButtonElement.addEventListener('click', hideModal);
-
-        // // title as pokemon name
-        // let titleElement = document.createElement('h1');
-        // titleElement.innerText = pokemon.name;
-
-        // // information displayed is sprite, height and types
-        // let imageContent = document.createElement('img');
-        // imageContent.setAttribute('src', pokemon.imageUrl);
-        // let heightElement = document.createElement('p');
-        // heightElement.innerText = 'height: ' + pokemon.height;
-        // let typeArray = pokemon.types.map(function (index) {
-        //     return index.type.name;
-        // })
-        // let typeElement = document.createElement('p');
-        // typeElement.innerText = 'type:'
-        // typeArray.forEach(function (type) {
-        //     typeElement.innerText += ' ' + type;
-        // });
-
-
-        // modal.appendChild(closeButtonElement);
-        // modal.appendChild(titleElement);
-        // modal.appendChild(imageContent);
-        // modal.appendChild(heightElement);
-        // modal.appendChild(typeElement);
-        // modalContainer.appendChild(modal);
-
-        // modalContainer.classList.add('is-visible');
-
         // nodes used for modal
         let modalTitle = document.querySelector('.modal-title');
         let modalBody = document.querySelector('.modal-body');
+        currentModalPokemon = pokemon;
 
         // erase all existing modal content
         while (modalBody.firstChild) {
@@ -203,7 +161,6 @@ let pokemonRepository = (function () {
         modalBody.appendChild(imageContent);
         modalBody.appendChild(heightElement);
         modalBody.appendChild(typeElement);
-
     }
 
     //variables for pointer events
@@ -241,11 +198,9 @@ let pokemonRepository = (function () {
         }
     }
 
-    // event listeners for swiping between data items
-    // modalContainer.addEventListener("pointerdown", handleStart);
-    // modalContainer.addEventListener("pointerup", handleEnd);
-
-
+     // event listeners for swiping between data items
+     modalContainer.addEventListener("pointerdown", handleStart);
+     modalContainer.addEventListener("pointerup", handleEnd);
 
     // --- My public functions --- 
     return {
@@ -258,7 +213,6 @@ let pokemonRepository = (function () {
     };
 
 })();
-
 
 //load pokemon data
 pokemonRepository.loadList().then(function () {

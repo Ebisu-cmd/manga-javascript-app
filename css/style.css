@@ -2,10 +2,22 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* increase font size of pokemon button text */
 .btn {
     font-size: 35px;
 }
 
+/* increased font weight for modal title */
 h5 {
     font-weight: 700;
 }
+
+/* set required pointer event properties for swiping between pokemon */
+#pokemonModal {
+    touch-action: none;
+}
+
+.modal-dialog {
+    touch-action: none;
+}
+

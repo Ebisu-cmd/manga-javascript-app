@@ -62,7 +62,7 @@ let pokemonRepository = (function () {
         rowdiv.setAttribute('style', 'height: 100px');
         coldiv.classList.add('col', 'd-flex', 'justify-content-center', 'm-2');
         button.innerText = pokemon.name;
-        button.classList.add('btn', 'btn-danger', 'btn-lg', 'w-50');
+        button.classList.add('btn', 'btn-danger', 'btn-lg', 'btn-block');
         button.setAttribute('type', 'button');
         button.setAttribute('style', 'height: 75px');
         //set button to open bootstrap modal

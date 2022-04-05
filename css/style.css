@@ -5,6 +5,7 @@ body {
 /* increase font size of pokemon button text */
 .btn {
     font-size: 35px;
+    max-width: 900px;
 }
 
 /* increased font weight for modal title */

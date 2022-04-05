@@ -161,18 +161,15 @@ let pokemonRepository = (function () {
 
     //variables for pointer events
     let startX = null;
-    let isSwiping = false;
 
     // takes note of start position of pointer
     function handleStart(e) {
-        isSwiping = true;
         let x = e.pageX; // X-coordinate of click/touch
         startX = x;
     }
 
     // checks if pointer traveled enough distance to swap between pokemon modals
     function handleEnd(e) {
-        isSwiping = false;
         if (Math.abs(e.pageX - startX) > 200) {
             // swipe left: go next pokemon
             if (e.pageX - startX < 0) {
@@ -195,8 +192,8 @@ let pokemonRepository = (function () {
     }
 
     // event listeners for swiping between data items
-    modalContainer.addEventListener("pointerdown", handleStart);
-    modalContainer.addEventListener("pointerup", handleEnd);
+    modalContainer.addEventListener('pointerdown', handleStart);
+    modalContainer.addEventListener('pointerup', handleEnd);
 
     // event listener for search bar
     let search_input = document.querySelector('input[type="text"]');
@@ -223,7 +220,7 @@ let pokemonRepository = (function () {
     });
 
 
-    // --- My public functions --- 
+    // --- My public functions ---
     return {
         getAll: getAll,
         addv: addv,

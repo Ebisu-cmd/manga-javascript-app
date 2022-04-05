@@ -141,6 +141,7 @@ let pokemonRepository = (function () {
         // get all details about pokemon
         let imageContent = document.createElement('img');
         imageContent.setAttribute('src', pokemon.imageUrl);
+        imageContent.setAttribute('alt', 'picture of: ' + pokemon.name);
         let heightElement = document.createElement('p');
         heightElement.innerText = 'height: ' + pokemon.height;
         let typeArray = pokemon.types.map(function (index) {

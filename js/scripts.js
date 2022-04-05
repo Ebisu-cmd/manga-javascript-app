@@ -3,6 +3,7 @@ let pokemonRepository = (function () {
 
     //IIFE variables
     let pokemonList = [];
+    let searchPokemonList = pokemonList;
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1126';
     let currentModalPokemon = null;
     let modalContainer = document.querySelector('#pokemonModal');
@@ -173,16 +174,16 @@ let pokemonRepository = (function () {
         if (Math.abs(e.pageX - startX) > 200) {
             // swipe left: go next pokemon
             if (e.pageX - startX < 0) {
-                let index = pokemonList.indexOf(currentModalPokemon);
+                let index = searchPokemonList.indexOf(currentModalPokemon);
                 // if index is last dont go next pokemon
-                index === (pokemonList.length - 1) ? null : showDetails(pokemonList[index + 1]);
+                index === (searchPokemonList.length - 1) ? null : showDetails(searchPokemonList[index + 1]);
                 startX = null;
             }
             // swipe right: go previous pokemon
             else if (e.pageX - startX > 0) {
-                let index = pokemonList.indexOf(currentModalPokemon);
+                let index = searchPokemonList.indexOf(currentModalPokemon);
                 // if index is first dont go next pokemon
-                index === 0 ? null : showDetails(pokemonList[index - 1]);
+                index === 0 ? null : showDetails(searchPokemonList[index - 1]);
                 startX = null;
             }
         }
@@ -201,6 +202,7 @@ let pokemonRepository = (function () {
         let container = document.querySelector('.container-fluid');
         //if input value is empty show all pokemon
         if (search_input.value === '') {
+            searchPokemonList = pokemonList;
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
@@ -210,10 +212,11 @@ let pokemonRepository = (function () {
         }
         //if input value is not empty show all pokemon that contains input
         else {
+            searchPokemonList = find(search_input.value);
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
-            find(search_input.value).forEach(function (pokemon) {
+            searchPokemonList.forEach(function (pokemon) {
                 pokemonRepository.addListItem(pokemon);
             });
         }
